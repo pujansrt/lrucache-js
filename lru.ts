@@ -1,37 +1,34 @@
 class LRUCache {
-    _capacity: Number;
-    _items: any = [];
+    capacity: Number;
+    items: any = [];
 
     constructor(capacity: Number) {
-        this._capacity = capacity;
-    }
-    add(value) {
-        if(this._items.length >= this._capacity) this.removeOldest();
-        this._items.push(value);
+        this.capacity = capacity;
     }
 
-    removeOldest(){
-        this._items.shift();
+    add(value: any) {
+        if (this.items.length >= this.capacity) this.removeOldest();
+        this.items.push(value);
     }
 
-    getItems(){
-        return this._items;
+    removeOldest() {
+        this.items.shift();
     }
 
-    remove(key){
-        this._items.splice(this._items.indexOf(key), 1);
-        delete this._items[key];
+    getItems() {
+        return this.items;
     }
 
-    getCapacity(){
-        return this._capacity;
+    remove(key: any) {
+        this.items.splice(this.items.indexOf(key), 1);
+        delete this.items[key];
     }
 
-    getSize(){
-        return this._items.length;
+    getCapacity() {
+        return this.capacity;
     }
-}
 
-let lru = new LRUCache(5);
-lru.add(1);
-
+    getSize() {
+        return this.items.length;
+    }
+}  

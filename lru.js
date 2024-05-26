@@ -1,31 +1,28 @@
 var LRUCache = (function () {
     function LRUCache(capacity) {
-        this._items = [];
-        this._capacity = capacity;
+        this.items = [];
+        this.capacity = capacity;
     }
     LRUCache.prototype.add = function (value) {
-        if (this._items.length >= this._capacity)
+        if (this.items.length >= this.capacity)
             this.removeOldest();
-        this._items.push(value);
+        this.items.push(value);
     };
     LRUCache.prototype.removeOldest = function () {
-        this._items.shift();
+        this.items.shift();
     };
     LRUCache.prototype.getItems = function () {
-        return this._items;
+        return this.items;
     };
     LRUCache.prototype.remove = function (key) {
-        this._items.splice(this._items.indexOf(key), 1);
-        delete this._items[key];
+        this.items.splice(this.items.indexOf(key), 1);
+        delete this.items[key];
     };
     LRUCache.prototype.getCapacity = function () {
-        return this._capacity;
+        return this.capacity;
     };
     LRUCache.prototype.getSize = function () {
-        return this._items.length;
+        return this.items.length;
     };
     return LRUCache;
 }());
-var lru = new LRUCache(5);
-lru.add(1);
-
